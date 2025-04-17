@@ -96,8 +96,8 @@ func (_c *MockFranchiseService_CreateNewFranchise_Call) RunAndReturn(run func(ct
 }
 
 // UpdateFranchise provides a mock function for the type MockFranchiseService
-func (_mock *MockFranchiseService) UpdateFranchise(ctx context.Context, branch *domain.Branch) (*domain.Franchise, error) {
-	ret := _mock.Called(ctx, branch)
+func (_mock *MockFranchiseService) UpdateFranchise(ctx context.Context, franchise *domain.Franchise) (*domain.Franchise, error) {
+	ret := _mock.Called(ctx, franchise)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateFranchise")
@@ -105,18 +105,18 @@ func (_mock *MockFranchiseService) UpdateFranchise(ctx context.Context, branch *
 
 	var r0 *domain.Franchise
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *domain.Branch) (*domain.Franchise, error)); ok {
-		return returnFunc(ctx, branch)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *domain.Franchise) (*domain.Franchise, error)); ok {
+		return returnFunc(ctx, franchise)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *domain.Branch) *domain.Franchise); ok {
-		r0 = returnFunc(ctx, branch)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *domain.Franchise) *domain.Franchise); ok {
+		r0 = returnFunc(ctx, franchise)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*domain.Franchise)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *domain.Branch) error); ok {
-		r1 = returnFunc(ctx, branch)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *domain.Franchise) error); ok {
+		r1 = returnFunc(ctx, franchise)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -130,24 +130,24 @@ type MockFranchiseService_UpdateFranchise_Call struct {
 
 // UpdateFranchise is a helper method to define mock.On call
 //   - ctx
-//   - branch
-func (_e *MockFranchiseService_Expecter) UpdateFranchise(ctx interface{}, branch interface{}) *MockFranchiseService_UpdateFranchise_Call {
-	return &MockFranchiseService_UpdateFranchise_Call{Call: _e.mock.On("UpdateFranchise", ctx, branch)}
+//   - franchise
+func (_e *MockFranchiseService_Expecter) UpdateFranchise(ctx interface{}, franchise interface{}) *MockFranchiseService_UpdateFranchise_Call {
+	return &MockFranchiseService_UpdateFranchise_Call{Call: _e.mock.On("UpdateFranchise", ctx, franchise)}
 }
 
-func (_c *MockFranchiseService_UpdateFranchise_Call) Run(run func(ctx context.Context, branch *domain.Branch)) *MockFranchiseService_UpdateFranchise_Call {
+func (_c *MockFranchiseService_UpdateFranchise_Call) Run(run func(ctx context.Context, franchise *domain.Franchise)) *MockFranchiseService_UpdateFranchise_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*domain.Branch))
+		run(args[0].(context.Context), args[1].(*domain.Franchise))
 	})
 	return _c
 }
 
-func (_c *MockFranchiseService_UpdateFranchise_Call) Return(franchise *domain.Franchise, err error) *MockFranchiseService_UpdateFranchise_Call {
-	_c.Call.Return(franchise, err)
+func (_c *MockFranchiseService_UpdateFranchise_Call) Return(franchise1 *domain.Franchise, err error) *MockFranchiseService_UpdateFranchise_Call {
+	_c.Call.Return(franchise1, err)
 	return _c
 }
 
-func (_c *MockFranchiseService_UpdateFranchise_Call) RunAndReturn(run func(ctx context.Context, branch *domain.Branch) (*domain.Franchise, error)) *MockFranchiseService_UpdateFranchise_Call {
+func (_c *MockFranchiseService_UpdateFranchise_Call) RunAndReturn(run func(ctx context.Context, franchise *domain.Franchise) (*domain.Franchise, error)) *MockFranchiseService_UpdateFranchise_Call {
 	_c.Call.Return(run)
 	return _c
 }
