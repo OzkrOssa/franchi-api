@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/OzkrOssa/franchi-api/internal/core/domain"
@@ -22,6 +23,10 @@ func NewFranchiseService(repo port.FranchiseRepository, cache port.CacheReposito
 }
 
 func (s *FranchiseService) CreateNewFranchise(ctx context.Context, franchise *domain.Franchise) (*domain.Franchise, error) {
+	if strings.TrimSpace(franchise.Name) == "" {
+		return nil, domain.ErrInvalidData
+	}
+
 	franchise, err := s.repo.CreateFranchise(ctx, franchise)
 	if err != nil {
 		if err == domain.ErrConflictingData {
