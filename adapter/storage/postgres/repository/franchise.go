@@ -2,7 +2,6 @@ package repository
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/Masterminds/squirrel"
 	"github.com/OzkrOssa/franchi-api/adapter/storage/postgres"
@@ -27,12 +26,12 @@ func (f *FranchiseRepository) CreateFranchise(ctx context.Context, frachise *dom
 	}
 
 	err = f.db.QueryRow(ctx, sql, args...).Scan(
-		frachise.ID,
-		frachise.Name,
+		&frachise.ID,
+		&frachise.Name,
 	)
 	if err != nil {
 		if errCode := f.db.ErrorCode(err); errCode == "23505" {
-			return nil, fmt.Errorf("conficting data: %v", err)
+			return nil, domain.ErrConflictingData
 		}
 		return nil, err
 	}
@@ -50,8 +49,8 @@ func (f *FranchiseRepository) UpdateFranchise(ctx context.Context, frachise *dom
 	}
 
 	err = f.db.QueryRow(ctx, sql, args...).Scan(
-		frachise.ID,
-		frachise.Name,
+		&frachise.ID,
+		&frachise.Name,
 	)
 	if err != nil {
 		if errCode := f.db.ErrorCode(err); errCode == "23505" {
