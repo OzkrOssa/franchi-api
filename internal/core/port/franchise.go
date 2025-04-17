@@ -14,5 +14,5 @@ type FranchiseRepository interface {
 
 type FranchiseService interface {
 	CreateNewFranchise(ctx context.Context, franchise *domain.Franchise) (*domain.Franchise, error)
-	UpdateFranchise(ctx context.Context, branch *domain.Branch) (*domain.Franchise, error)
+	UpdateFranchise(ctx context.Context, franchise *domain.Franchise) (*domain.Franchise, error)
 }
