@@ -1,0 +1,17 @@
+all: false
+force-file-write: true
+formatter: goimports
+log-level: info
+recursive: false
+require-template-schema-exists: true
+template: testify
+template-schema: '{{.Template}}.schema.json'
+
+packages:
+  github.com/OzkrOssa/franchi-api/internal/core/port:
+    config:
+      all: true
+      dir: './internal/core/port/mocks'
+      filename: 'mock_{{.InterfaceName}}.go'
+      structname: 'Mock{{.InterfaceName}}'
+      pkgname: 'mocks'
