@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:16
+    container_name: franchiapi_db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - franchiapi_network
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    restart: always
+    container_name: "franchiapi_redis"
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - franchiapi_network
+
+networks:
+  franchiapi_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
