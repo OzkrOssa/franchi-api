@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/Masterminds/squirrel"
-	"github.com/OzkrOssa/franchi-api/adapter/storage/postgres"
+	"github.com/OzkrOssa/franchi-api/internal/adapter/storage/postgres"
 	"github.com/OzkrOssa/franchi-api/internal/core/domain"
 	"github.com/jackc/pgx/v5"
 )

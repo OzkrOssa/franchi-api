@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/OzkrOssa/franchi-api/adapter/config"
+	"github.com/OzkrOssa/franchi-api/internal/adapter/config"
 	"github.com/OzkrOssa/franchi-api/internal/core/port"
 	"github.com/redis/go-redis/v9"
 )
